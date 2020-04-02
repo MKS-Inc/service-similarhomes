@@ -12,7 +12,12 @@
   - Status : `200 OK`
   - Content example:
   ```
-  [{"id":1,"neighborhood":"The Mission","home_cost":1887000,"bedrooms":3,"bathrooms":2,"home_address":"Walker Crossing Wy.","sf":2259,"home_image":"49.jpg","heart_filled":0},{"id":2,"neighborhood":"Noe Valley","home_cost":1426000,"bedrooms":5,"bathrooms":4,"home_address":"Stacy Parkway Ct.","sf":4015,"home_image":"14.jpg","heart_filled":0},{"id":3,"neighborhood":"North Beach","home_cost":1464000,"bedrooms":3,"bathrooms":2,"
+  [{"id":1,"neighborhood":"The Mission","home_cost":1887000,"bedrooms":3,"bathrooms":2,
+  "home_address":"Walker Crossing Wy.","sf":2259,"home_image":"49.jpg",
+  "heart_filled":0},{"id":2,"neighborhood":"Noe Valley","home_cost":1426000,
+  "bedrooms":5,"bathrooms":4,"home_address":"Stacy Parkway Ct.","sf":4015,
+  "home_image":"14.jpg","heart_filled":0},{"id":3,"neighborhood":"North Beach",
+  "home_cost":1464000,"bedrooms":3,"bathrooms":2,"
   ...
 
   ```
@@ -27,7 +32,7 @@
 - Response
   - Status : 200 OK
 
-## Delete home value summary
+## Delete house
 - DELETE `/api/deletehouse`
 - Response
   - Status : 200 OK
