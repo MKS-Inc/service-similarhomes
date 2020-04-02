@@ -58,6 +58,10 @@ app.put('/api/houses', (req, res) => {
     });
 });
 
+app.put('/api/updatehouse', db.updateHouseData);
+app.post('/api/createhouse', db.createHouseData);
+app.delete('/api/deletehouse', db.deleteHouseData);
+
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
 });

@@ -10,7 +10,7 @@ const app = express();
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'secret',
+  password: '1',
   database: 'abode',
 });
 
@@ -91,6 +91,44 @@ const getHeartData = (id) => {
   });
 };
 
+// create
+const createHouseData = () => {
+  return new Promise((resolve, reject) => {
+    const queryStr = 'INSERT INTO houses (`neighborhood`, `home_cost`, `bedrooms`, `bathrooms`, `home_address`, `sf`, `home_image`, `heart_filled`) VALUES ("S", 899000, 2, 1, "1965 Howard St.", 3000, "49.jpg", 0)';
+    connection.query(queryStr, (err, result, fields) => {
+      if (err) {
+        return reject(err);
+      }
+      resolve(result);
+    });
+  });
+};
+
+// delete
+const deleteHouseData = () => {
+  return new Promise((resolve, reject) => {
+    const queryStr = 'DELETE FROM houses WHERE id = 511';
+    connection.query(queryStr, (err, result, fields) => {
+      if (err) {
+        return reject(err);
+      }
+      resolve(result);
+    });
+  });
+};
+
+const updateHouseData = () => {
+  return new Promise((resolve, reject) => {
+    const queryStr = 'UPDATE houses SET bedrooms = 15 WHERE id = 510';
+    connection.query(queryStr, (err, result, fields) => {
+      if (err) {
+        return reject(err);
+      }
+      resolve(result);
+    });
+  });
+};
+
 module.exports = {
   connection,
   getThisNeighborhoodData,
@@ -99,4 +137,7 @@ module.exports = {
   getAllNeighborhoodHouses,
   updateHeart,
   getHeartData,
+  deleteHouseData,
+  createHouseData,
+  updateHouseData,
 };

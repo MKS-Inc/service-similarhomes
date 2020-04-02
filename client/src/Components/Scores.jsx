@@ -4,6 +4,7 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import $ from 'jquery';
+import axios from 'axios';
 
 const Scores = ({ neighborhood }) => {
   let walkScore;
@@ -57,9 +58,41 @@ const Scores = ({ neighborhood }) => {
     });
   };
 
+
+
+  const onAdd = () => {
+    axios.post('/api/createhouse')
+      .then((res) => {
+        console.log(res.data);
+      });
+  };
+
+  const onDelete = (event) => {
+    event.preventDefault();
+
+    axios.delete('/api/deletehouse')
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+      });
+  };
+
+  const onUpdate = (event) => {
+    event.preventDefault();
+
+    axios.put('/api/updatehouse')
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+      });
+  };
+
   return (
     <div id="scoresContainer">
       <div className="scoreItem">
+        <button onClick={onAdd}>Add</button>
+        <button onClick={onDelete}>Delete</button>
+        <button onClick={onUpdate}>Update</button>
         <div className="scoreImageContainer"><img src="https://hrfecimages.s3-us-west-1.amazonaws.com/person.png" alt="person" className="personImage" /></div>
         <span className="scoreText" onClick={onClickWalkModal}>Walk Score</span>
         <span><sup>®</sup>: </span>

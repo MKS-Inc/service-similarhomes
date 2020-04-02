@@ -9,7 +9,7 @@
     "test:coverage": "jest --coverage --colors",
     "build:react": "webpack -d --watch",
     "start": "node server/index.js",
-    "start-dev": "node server/index.js",
+    "start-dev": "nodemon server/index.js",
     "populateNeighborhoods": "node database/fakerPopulateNeighborhoods.js",
     "populateHouses": "node database/fakerPopulateHouses.js"
   },
@@ -62,7 +62,7 @@
     "jest": "^25.1.0",
     "jest-environment-enzyme": "^7.1.2",
     "jest-enzyme": "^7.1.2",
-    "webpack": "^4.42.0",
+    "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11"
   }
 }
