@@ -6,34 +6,23 @@
 
 # API Documentation
 
-## get houses
-- GET `/api/houses`
-- Response
-  - Status : `200 OK`
-  - Content example:
-  ```
-  [{"id":1,"neighborhood":"The Mission","home_cost":1887000,"bedrooms":3,"bathrooms":2,
-  "home_address":"Walker Crossing Wy.","sf":2259,"home_image":"49.jpg",
-  "heart_filled":0},{"id":2,"neighborhood":"Noe Valley","home_cost":1426000,
-  "bedrooms":5,"bathrooms":4,"home_address":"Stacy Parkway Ct.","sf":4015,
-  "home_image":"14.jpg","heart_filled":0},{"id":3,"neighborhood":"North Beach",
-  "home_cost":1464000,"bedrooms":3,"bathrooms":2,"
-  ...
-
-  ```
-
-## Add house
-- POST `/api/createhouse`
+## get property
+- GET `/api/properties/:id`
 - Response
   - Status : `200 OK`
 
-## Update house
-- PUT `/api/updatehouse`
+## Add property
+- POST `/api/properties/:num/`
 - Response
-  - Status : 200 OK
+  - Status : `201 Created`
 
-## Delete house
-- DELETE `/api/deletehouse`
+## Update property
+- PUT `/api/properties/:num/:id`
+- Response
+  - Status : 204 Updated
+
+## Delete property
+- DELETE `/api/properties/:id`
 - Response
   - Status : 200 OK
 

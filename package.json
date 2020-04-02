@@ -11,7 +11,8 @@
     "start": "node server/index.js",
     "start-dev": "nodemon server/index.js",
     "populateNeighborhoods": "node database/fakerPopulateNeighborhoods.js",
-    "populateHouses": "node database/fakerPopulateHouses.js"
+    "populateHouses": "node database/fakerPopulateHouses.js",
+    "populateProperties": "node database/fakerPopulateProperties.js"
   },
   "repository": {
     "type": "git",

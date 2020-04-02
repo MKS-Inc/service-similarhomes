@@ -58,10 +58,63 @@ app.put('/api/houses', (req, res) => {
     });
 });
 
-app.put('/api/updatehouse', db.updateHouseData);
-app.post('/api/createhouse', db.createHouseData);
-app.delete('/api/deletehouse', db.deleteHouseData);
+
+
+// you dont want any verb on api address
+// REST doesn't want to see any verb
+
+// GET
+app.get('/api/properties/:id', (req, res) => {
+  db.getPropertyData(req.params.id)
+    .then((results) => res.status(200).json(results))
+    .catch((err) => {
+      throw err;
+    });
+});
+
+// DELETE
+app.delete('/api/properties/:id', (req, res) => {
+  db.deletePropertyData(req.params.id)
+    .then((results) => res.status(200).json(results))
+    .catch((err) => {
+      throw err;
+    });
+});
+
+// UPDATE
+app.put('/api/properties/:num/:id', (req, res) => {
+  db.updatePropertyData(req.params.num, req.params.id)
+    .then((results) => res.status(200).json(results))
+    .catch((err) => {
+      throw err;
+    });
+});
+
+// CREATE
+app.post('/api/properties/:num/', (req, res) => {
+  db.createPropertyData(req.params.num)
+    .then((results) => res.status(200).json(results))
+    .catch((err) => {
+      throw err;
+    });
+});
+
+// /api/houses/:id
+// app.put('/api/updatehouse', db.updateHouseData);
+
+// image -> url
+// /api/houses
+// app.post('/api/createhouse', db.createPropertyData);
+
+
 
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
 });
+
+
+// 200 201 202
+// 200 just general
+// 201 successfully created
+
+// what data needs to be requested

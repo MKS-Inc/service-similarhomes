@@ -91,11 +91,24 @@ const getHeartData = (id) => {
   });
 };
 
-// create
-const createHouseData = () => {
+const updateHouseData = () => {
   return new Promise((resolve, reject) => {
-    const queryStr = 'INSERT INTO houses (`neighborhood`, `home_cost`, `bedrooms`, `bathrooms`, `home_address`, `sf`, `home_image`, `heart_filled`) VALUES ("S", 899000, 2, 1, "1965 Howard St.", 3000, "49.jpg", 0)';
+    const queryStr = 'UPDATE houses SET bedrooms = 15 WHERE id = 510';
     connection.query(queryStr, (err, result, fields) => {
+      if (err) {
+        return reject(err);
+      }
+      resolve(result);
+    });
+  });
+};
+
+
+// get
+const getPropertyData = (id) => {
+  return new Promise((resolve, reject) => {
+    const queryStr = 'SELECT * FROM properties WHERE id = ?';
+    connection.query(queryStr, id, (err, result, fields) => {
       if (err) {
         return reject(err);
       }
@@ -105,10 +118,10 @@ const createHouseData = () => {
 };
 
 // delete
-const deleteHouseData = () => {
+const deletePropertyData = (id) => {
   return new Promise((resolve, reject) => {
-    const queryStr = 'DELETE FROM houses WHERE id = 511';
-    connection.query(queryStr, (err, result, fields) => {
+    const queryStr = 'DELETE FROM properties WHERE id = ?';
+    connection.query(queryStr, id, (err, result, fields) => {
       if (err) {
         return reject(err);
       }
@@ -117,10 +130,24 @@ const deleteHouseData = () => {
   });
 };
 
-const updateHouseData = () => {
+// update
+const updatePropertyData = (num, id) => {
   return new Promise((resolve, reject) => {
-    const queryStr = 'UPDATE houses SET bedrooms = 15 WHERE id = 510';
-    connection.query(queryStr, (err, result, fields) => {
+    const queryStr = 'UPDATE properties SET home_image = ? WHERE id = ?';
+    connection.query(queryStr, [num + '.jpg', id], (err, result, fields) => {
+      if (err) {
+        return reject(err);
+      }
+      resolve(result);
+    });
+  });
+};
+
+// create
+const createPropertyData = (num) => {
+  return new Promise((resolve, reject) => {
+    const queryStr = 'INSERT INTO properties (home_image) VALUES (?)';
+    connection.query(queryStr, [num + '.jpg'], (err, result, fields) => {
       if (err) {
         return reject(err);
       }
@@ -137,7 +164,23 @@ module.exports = {
   getAllNeighborhoodHouses,
   updateHeart,
   getHeartData,
-  deleteHouseData,
-  createHouseData,
   updateHouseData,
+  getPropertyData,
+  deletePropertyData,
+  updatePropertyData,
+  createPropertyData,
 };
+
+
+// // create
+// const createPropertyData = () => {
+//   return new Promise((resolve, reject) => {
+//     const queryStr = 'INSERT INTO houses (`neighborhood`, `home_cost`, `bedrooms`, `bathrooms`, `home_address`, `sf`, `home_image`, `heart_filled`) VALUES ("S", 899000, 2, 1, "1965 Howard St.", 3000, "49.jpg", 0)';
+//     connection.query(queryStr, (err, result, fields) => {
+//       if (err) {
+//         return reject(err);
+//       }
+//       resolve(result);
+//     });
+//   });
+// };
