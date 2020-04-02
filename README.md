@@ -38,13 +38,13 @@
   - Status : 200 OK
 
 # Server set up
-NOTE: This server will run on port 3006 of your local host
-
-NOTE: you might have to change the option in the db.js file (inside the server folder) to have the correct log in to your mysql server
+NOTE: This server will run on port 3001 of your local host
 
 Run this command in the CLI (in this module's root directorate):
-- npm start
+- npm run build:react
+- npm run start-dev
+- npm run populateHouses
 
 # Accessing the service
 Go to your browser (preferrably Google Chrome) and type in:
-- http://localhost:3006
+- http://localhost:3001
