@@ -43,10 +43,50 @@ const getAllNeighborhoodData = (neighborhood) => {
   });
 };
 
+// GET
 const getAllHouseData = () => {
   return new Promise((resolve, reject) => {
     const queryStr = 'SELECT * FROM houses';
     connection.query(queryStr, (err, result, fields) => {
+      if (err) {
+        return reject(err);
+      }
+      resolve(result);
+    });
+  });
+};
+
+// DELETE
+const deleteHouseData = (id) => {
+  return new Promise((resolve, reject) => {
+    const queryStr = 'DELETE FROM houses WHERE id = ?';
+    connection.query(queryStr, id, (err, result, fields) => {
+      if (err) {
+        return reject(err);
+      }
+      resolve(result);
+    });
+  });
+};
+
+// UPDATE
+const updateHouseData = (num, id) => {
+  return new Promise((resolve, reject) => {
+    const queryStr = 'UPDATE houses SET home_cost = ? WHERE id = ?';
+    connection.query(queryStr, [num, id], (err, result, fields) => {
+      if (err) {
+        return reject(err);
+      }
+      resolve(result);
+    });
+  });
+};
+
+// CREATE
+const createHouseData = (num) => {
+  return new Promise((resolve, reject) => {
+    const queryStr = 'INSERT INTO houses (neighborhood, home_cost, bedrooms, bathrooms, home_address, sf, home_image, heart_filled) VALUES ("Nob Hill", 100000, 5, 2, "Harrison St.", 1110, ?, 0)';
+    connection.query(queryStr, [num + '.jpg'], (err, result, fields) => {
       if (err) {
         return reject(err);
       }
@@ -91,19 +131,6 @@ const getHeartData = (id) => {
   });
 };
 
-const updateHouseData = () => {
-  return new Promise((resolve, reject) => {
-    const queryStr = 'UPDATE houses SET bedrooms = 15 WHERE id = 510';
-    connection.query(queryStr, (err, result, fields) => {
-      if (err) {
-        return reject(err);
-      }
-      resolve(result);
-    });
-  });
-};
-
-
 // get
 const getPropertyData = (id) => {
   return new Promise((resolve, reject) => {
@@ -116,6 +143,7 @@ const getPropertyData = (id) => {
     });
   });
 };
+
 
 // delete
 const deletePropertyData = (id) => {
@@ -169,18 +197,6 @@ module.exports = {
   deletePropertyData,
   updatePropertyData,
   createPropertyData,
+  deleteHouseData,
+  createHouseData,
 };
-
-
-// // create
-// const createPropertyData = () => {
-//   return new Promise((resolve, reject) => {
-//     const queryStr = 'INSERT INTO houses (`neighborhood`, `home_cost`, `bedrooms`, `bathrooms`, `home_address`, `sf`, `home_image`, `heart_filled`) VALUES ("S", 899000, 2, 1, "1965 Howard St.", 3000, "49.jpg", 0)';
-//     connection.query(queryStr, (err, result, fields) => {
-//       if (err) {
-//         return reject(err);
-//       }
-//       resolve(result);
-//     });
-//   });
-// };

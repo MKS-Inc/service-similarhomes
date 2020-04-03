@@ -30,5 +30,3 @@ CREATE TABLE properties (
     id INT AUTO_INCREMENT PRIMARY KEY,
     home_image VARCHAR (7) NOT NULL
 );
-
--- nosql -> mongoDB 

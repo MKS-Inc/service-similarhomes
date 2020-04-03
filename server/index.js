@@ -2,6 +2,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const db = require('../database');
+const mongodb = require('../mongoDB');
 
 const port = 3001;
 const app = express();
@@ -11,6 +12,9 @@ const app = express();
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+mongodb.on('error', console.error.bind(console, 'MongoDB connection error:'));
+const propertyRouter = require('../routes/property-router');
 
 app.get('/api/neighborhoods', (req, res) => {
   db.getThisNeighborhoodData(req.query.name)
@@ -42,8 +46,36 @@ app.get('/api/houses', (req, res) => {
   }
 });
 
+// GET
 app.get('/api/houses', (req, res) => {
   db.getAllHouseData()
+    .then((results) => res.status(200).json(results))
+    .catch((err) => {
+      throw err;
+    });
+});
+
+// DELETE
+app.delete('/api/houses/:id', (req, res) => {
+  db.deleteHouseData(req.params.id)
+    .then((results) => res.status(200).json(results))
+    .catch((err) => {
+      throw err;
+    });
+});
+
+// UPDATE
+app.put('/api/houses/:num/:id', (req, res) => {
+  db.updateHouseData(req.params.num, req.params.id)
+    .then((results) => res.status(200).json(results))
+    .catch((err) => {
+      throw err;
+    });
+});
+
+// CREATE
+app.post('/api/houses/:num/', (req, res) => {
+  db.createHouseData(req.params.num)
     .then((results) => res.status(200).json(results))
     .catch((err) => {
       throw err;
@@ -57,11 +89,6 @@ app.put('/api/houses', (req, res) => {
       throw err;
     });
 });
-
-
-
-// you dont want any verb on api address
-// REST doesn't want to see any verb
 
 // GET
 app.get('/api/properties/:id', (req, res) => {
@@ -99,22 +126,8 @@ app.post('/api/properties/:num/', (req, res) => {
     });
 });
 
-// /api/houses/:id
-// app.put('/api/updatehouse', db.updateHouseData);
-
-// image -> url
-// /api/houses
-// app.post('/api/createhouse', db.createPropertyData);
-
-
+app.use('/api', propertyRouter);
 
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
 });
-
-
-// 200 201 202
-// 200 just general
-// 201 successfully created
-
-// what data needs to be requested

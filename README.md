@@ -7,22 +7,22 @@
 # API Documentation
 
 ## get property
-- GET `/api/properties/:id`
+- GET `/api/houses`
 - Response
   - Status : `200 OK`
 
 ## Add property
-- POST `/api/properties/:num/`
+- POST `/api/houses/:num/`
 - Response
   - Status : `201 Created`
 
 ## Update property
-- PUT `/api/properties/:num/:id`
+- PUT `/api/houses/:num/:id`
 - Response
   - Status : 204 Updated
 
 ## Delete property
-- DELETE `/api/properties/:id`
+- DELETE `/api/houses/:id`
 - Response
   - Status : 200 OK
 
