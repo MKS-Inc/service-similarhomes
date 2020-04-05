@@ -15,11 +15,13 @@
 - POST `/api/houses/:num/`
 - Response
   - Status : `201 Created`
+  - num : `Image Name, ex) if num is 1353 then post 1353.jpg`
 
 ## Update property
 - PUT `/api/houses/:num/:id`
 - Response
   - Status : 204 Updated
+  - num : `Image Name, ex) if num is 1353 then pus 1353.jpg`
 
 ## Delete property
 - DELETE `/api/houses/:id`

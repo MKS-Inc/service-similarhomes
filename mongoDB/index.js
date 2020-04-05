@@ -13,7 +13,7 @@ const propertiesCollection = mongodb.collection('properties');
 
 const properties = [];
 
-for (let i = 0; i < 1; i++) {
+for (let i = 0; i < 5; i++) {
   const id = faker.random.number({ min: 1, max: 100 });
   const neighborhood = faker.address.city();
   const homeCost = faker.random.number({ min: 800000, max: 1500000 });

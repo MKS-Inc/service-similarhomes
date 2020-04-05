@@ -7,8 +7,6 @@ const mongodb = require('../mongoDB');
 const port = 3001;
 const app = express();
 
-// eslint-disable-next-line prefer-template
-// eslint-disable-next-line no-path-concat
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
