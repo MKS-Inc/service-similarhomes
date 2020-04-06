@@ -15,7 +15,6 @@
 - POST `/api/houses`
 - Response
   - Status : `201 Created`
-  - num : `Image Name, ex) if num is 1353 then post 1353.jpg`
 
 ## Update property
 - PUT `/api/houses`
