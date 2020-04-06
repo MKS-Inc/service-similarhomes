@@ -90,7 +90,7 @@ app.post('/api/houses', (req, res) => {
 });
 
 app.put('/api/houses', (req, res) => {
-  db.updateHeart(req.body.params.houseId)
+  db.updateHouse(req.body.params.houseId)
     .then((results) => res.status(200).json(results))
     .catch((err) => {
       throw err;

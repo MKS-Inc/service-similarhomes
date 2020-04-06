@@ -28,18 +28,29 @@
 ## Add property
 - POST `/api/houses`
 - Response
-  - Status : `201 Created`
+  - Status : `201 OK`
+  - New Data : 
+    {
+        "id": 1,
+        "neighborhood": "Noe Valley",
+        "home_cost": 1545000,
+        "bedrooms": 4,
+        "bathrooms": 2,
+        "home_address": "Dicki Estates Ct.",
+        "sf": 3312,
+        "home_image": "22.jpg",
+        "heart_filled": 0
+    }
 
 ## Update property
 - PUT `/api/houses`
 - Response
-  - Status : `204 Updated`
-  - detail : `Updates heart filled`
+  - Status : `204 OK`
 
 ## Delete property
 - DELETE `/api/houses/:id`
 - Response
-  - Status : `204 Deleted`
+  - Status : `204 OK`
 
 # Server set up
 NOTE: This server will run on port 3001 of your local host

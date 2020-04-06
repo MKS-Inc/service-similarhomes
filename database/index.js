@@ -131,6 +131,18 @@ const updateHeart = (houseId) => {
   });
 };
 
+const updateHouse = (houseId) => {
+  return new Promise((resolve, reject) => {
+    const queryStr = `UPDATE houses SET home_image = "300.px" WHERE id = "${houseId}"`;
+    connection.query(queryStr, (err, result, fields) => {
+      if (err) {
+        return reject(err);
+      }
+      resolve(result);
+    });
+  });
+};
+
 const getHeartData = (id) => {
   return new Promise((resolve, reject) => {
     const queryStr = `SELECT heart_filled FROM houses WHERE id = "${id}"`;
@@ -211,4 +223,5 @@ module.exports = {
   createPropertyData,
   deleteHouseData,
   createHouseData,
+  updateHouse,
 };
