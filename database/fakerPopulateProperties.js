@@ -21,6 +21,6 @@ const populateProperties = () => {
   });
 };
 
-populateProperties();
+// populateProperties();
 
 module.exports = { populateProperties };

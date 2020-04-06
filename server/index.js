@@ -71,7 +71,6 @@ app.put('/api/houses/:num/:id', (req, res) => {
     });
 });
 
-// CREATE
 // app.post('/api/houses/:num/', (req, res) => {
 //   db.createHouseData(req.body)
 //     .then((results) => res.status(200).json(results))
@@ -80,9 +79,9 @@ app.put('/api/houses/:num/:id', (req, res) => {
 //     });
 // });
 
+// CREATE
 app.post('/api/houses', (req, res) => {
-  const house = req.body;
-  db.createHouseData(house)
+  db.createHouseData(req.body)
     .then((results) => res.status(201).json(results))
     .catch((err) => {
       throw err;

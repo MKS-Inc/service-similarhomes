@@ -33,6 +33,6 @@ for (let i = 0; i < 5; i++) {
   };
   properties.push(newProperties);
 }
-propertiesCollection.insertMany(properties);
+// propertiesCollection.insertMany(properties);
 
 module.exports = mongodb;
