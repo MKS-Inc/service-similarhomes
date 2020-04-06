@@ -1,4 +1,4 @@
-# Abode Property value/cost System Design
+# Similar Homes SDC Project
 
 # Related Projects
 - https://github.com/MKS-Inc/service-monthlyCost_rentalValue
