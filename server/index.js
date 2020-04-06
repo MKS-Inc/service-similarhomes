@@ -72,9 +72,18 @@ app.put('/api/houses/:num/:id', (req, res) => {
 });
 
 // CREATE
-app.post('/api/houses/:num/', (req, res) => {
-  db.createHouseData(req.params.num)
-    .then((results) => res.status(200).json(results))
+// app.post('/api/houses/:num/', (req, res) => {
+//   db.createHouseData(req.body)
+//     .then((results) => res.status(200).json(results))
+//     .catch((err) => {
+//       throw err;
+//     });
+// });
+
+app.post('/api/houses', (req, res) => {
+  const house = req.body;
+  db.createHouseData(house)
+    .then((results) => res.status(201).json(results))
     .catch((err) => {
       throw err;
     });
@@ -89,40 +98,40 @@ app.put('/api/houses', (req, res) => {
 });
 
 // GET
-app.get('/api/properties/:id', (req, res) => {
-  db.getPropertyData(req.params.id)
-    .then((results) => res.status(200).json(results))
-    .catch((err) => {
-      throw err;
-    });
-});
+// app.get('/api/properties/:id', (req, res) => {
+//   db.getPropertyData(req.params.id)
+//     .then((results) => res.status(200).json(results))
+//     .catch((err) => {
+//       throw err;
+//     });
+// });
 
 // DELETE
-app.delete('/api/properties/:id', (req, res) => {
-  db.deletePropertyData(req.params.id)
-    .then((results) => res.status(200).json(results))
-    .catch((err) => {
-      throw err;
-    });
-});
+// app.delete('/api/properties/:id', (req, res) => {
+//   db.deletePropertyData(req.params.id)
+//     .then((results) => res.status(200).json(results))
+//     .catch((err) => {
+//       throw err;
+//     });
+// });
 
 // UPDATE
-app.put('/api/properties/:num/:id', (req, res) => {
-  db.updatePropertyData(req.params.num, req.params.id)
-    .then((results) => res.status(200).json(results))
-    .catch((err) => {
-      throw err;
-    });
-});
+// app.put('/api/properties/:num/:id', (req, res) => {
+//   db.updatePropertyData(req.params.num, req.params.id)
+//     .then((results) => res.status(200).json(results))
+//     .catch((err) => {
+//       throw err;
+//     });
+// });
 
 // CREATE
-app.post('/api/properties/:num/', (req, res) => {
-  db.createPropertyData(req.params.num)
-    .then((results) => res.status(200).json(results))
-    .catch((err) => {
-      throw err;
-    });
-});
+// app.post('/api/properties/:num/', (req, res) => {
+//   db.createPropertyData(req.params.num)
+//     .then((results) => res.status(200).json(results))
+//     .catch((err) => {
+//       throw err;
+//     });
+// });
 
 app.use('/api', propertyRouter);
 

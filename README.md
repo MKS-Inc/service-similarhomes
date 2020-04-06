@@ -12,16 +12,16 @@
   - Status : `200 OK`
 
 ## Add property
-- POST `/api/houses/:num/`
+- POST `/api/houses`
 - Response
   - Status : `201 Created`
   - num : `Image Name, ex) if num is 1353 then post 1353.jpg`
 
 ## Update property
-- PUT `/api/houses/:num/:id`
+- PUT `/api/houses`
 - Response
   - Status : 204 Updated
-  - num : `Image Name, ex) if num is 1353 then pus 1353.jpg`
+  - detail : `Updates heart filled`
 
 ## Delete property
 - DELETE `/api/houses/:id`

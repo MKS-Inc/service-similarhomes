@@ -9,7 +9,7 @@ const db = require('./index.js');
 const populateProperties = () => {
   return new Promise((resolve, reject) => {
     for (let i = 0; i < 10; i++) {
-      const image = faker.random.number({ min: 1, max: 55 }) + '.jpg';
+      const image = faker.random.number({ min: 1, max: 1000000 }) + '.jpg';
       const queryStr = `INSERT INTO properties (home_image) VALUES ("${image}")`;
       db.connection.query(queryStr, (err, result, fields) => {
         if (err) {

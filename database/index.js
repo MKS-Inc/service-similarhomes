@@ -83,10 +83,22 @@ const updateHouseData = (num, id) => {
 };
 
 // CREATE
-const createHouseData = (num) => {
+// const createHouseData = (num) => {
+//   return new Promise((resolve, reject) => {
+//     const queryStr = 'INSERT INTO houses (neighborhood, home_cost, bedrooms, bathrooms, home_address, sf, home_image, heart_filled) VALUES ("Nob Hill", 100000, 5, 2, "Harrison St.", 1110, ?, 0)';
+//     connection.query(queryStr, [num + '.jpg'], (err, result, fields) => {
+//       if (err) {
+//         return reject(err);
+//       }
+//       resolve(result);
+//     });
+//   });
+// };
+
+const createHouseData = (house) => {
   return new Promise((resolve, reject) => {
-    const queryStr = 'INSERT INTO houses (neighborhood, home_cost, bedrooms, bathrooms, home_address, sf, home_image, heart_filled) VALUES ("Nob Hill", 100000, 5, 2, "Harrison St.", 1110, ?, 0)';
-    connection.query(queryStr, [num + '.jpg'], (err, result, fields) => {
+    const queryStr = `INSERT INTO houses (neighborhood, home_cost, bedrooms, bathrooms, home_address, sf, home_image, heart_filled) VALUES ("${house.neighborhood}", ${house.home_cost}, ${house.bedrooms}, ${house.bathrooms}, "${house.home_address}", ${house.sf}, "${house.home_image}", 0)`
+    connection.query(queryStr, (err, result) => {
       if (err) {
         return reject(err);
       }
