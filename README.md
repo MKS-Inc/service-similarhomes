@@ -10,6 +10,20 @@
 - GET `/api/houses`
 - Response
   - Status : `200 OK`
+  - Sample data :
+    [
+    {
+        "id": 1,
+        "neighborhood": "Noe Valley",
+        "home_cost": 1545000,
+        "bedrooms": 4,
+        "bathrooms": 2,
+        "home_address": "Dicki Estates Ct.",
+        "sf": 3312,
+        "home_image": "22.jpg",
+        "heart_filled": 0
+    },
+    ...
 
 ## Add property
 - POST `/api/houses`
@@ -19,13 +33,13 @@
 ## Update property
 - PUT `/api/houses`
 - Response
-  - Status : 204 Updated
+  - Status : `204 Updated`
   - detail : `Updates heart filled`
 
 ## Delete property
 - DELETE `/api/houses/:id`
 - Response
-  - Status : 200 OK
+  - Status : `204 Deleted`
 
 # Server set up
 NOTE: This server will run on port 3001 of your local host

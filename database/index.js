@@ -97,7 +97,7 @@ const updateHouseData = (num, id) => {
 
 const createHouseData = (house) => {
   return new Promise((resolve, reject) => {
-    const queryStr = `INSERT INTO houses (neighborhood, home_cost, bedrooms, bathrooms, home_address, sf, home_image, heart_filled) VALUES ("${house.neighborhood}", ${house.home_cost}, ${house.bedrooms}, ${house.bathrooms}, "${house.home_address}", ${house.sf}, "${house.home_image}", 0)`;
+    const queryStr = `INSERT INTO houses (neighborhood, home_cost, bedrooms, bathrooms, home_address, sf, home_image) VALUES (${house.neighborhood}, ${house.home_cost}, ${house.bedrooms}, ${house.bathrooms}, "${house.home_address}", ${house.sf}, "${house.home_image}")`;
     connection.query(queryStr, (err, result) => {
       if (err) {
         return reject(err);

@@ -81,7 +81,8 @@ app.put('/api/houses/:num/:id', (req, res) => {
 
 // CREATE
 app.post('/api/houses', (req, res) => {
-  db.createHouseData(req.body)
+  const house = req.body;
+  db.createHouseData(house)
     .then((results) => res.status(201).json(results))
     .catch((err) => {
       throw err;
